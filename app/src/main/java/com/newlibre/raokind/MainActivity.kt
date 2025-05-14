@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var infoToggleButton: ImageButton
     lateinit var explainToggleButton: ImageButton
+    lateinit var quoteToggleButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         infoToggleButton = findViewById<ImageButton>(R.id.infoToggleButton)
         explainToggleButton = findViewById<ImageButton>(R.id.explainToggleButton)
+        quoteToggleButton = findViewById<ImageButton>(R.id.quoteToggleButton)
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -40,6 +42,10 @@ class MainActivity : AppCompatActivity() {
        }
         explainToggleButton.setOnClickListener{
             toggleExplainVisibility(navView)
+        }
+
+        quoteToggleButton.setOnClickListener{
+            toggleQuoteVisibility(navView)
         }
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
@@ -61,6 +67,15 @@ class MainActivity : AppCompatActivity() {
 
         // Change arrow direction
         explainToggleButton.setImageResource(if (isExpanded) R.drawable.ic_arrow_right else R.drawable.ic_arrow_down)
+    }
+
+    fun toggleQuoteVisibility(view: View) {
+        val textView = findViewById<TextView>(R.id.quoteTextView)
+        val isExpanded = textView.visibility == View.VISIBLE
+        textView.visibility = if (isExpanded) View.GONE else View.VISIBLE
+
+        // Change arrow direction
+        quoteToggleButton.setImageResource(if (isExpanded) R.drawable.ic_arrow_right else R.drawable.ic_arrow_down)
     }
 
 }
