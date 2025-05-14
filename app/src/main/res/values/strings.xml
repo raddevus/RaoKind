@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RaoKind</string>
-    <string name="title_main">Main</string>
+    <string name="title_main">Random Acts of Kindness</string>
+    <string name="tab_main">Main</string>
     <string name="title_dailytask">Daily Task</string>
     <string name="title_history">History</string>
     <string name="title_profile">Profile</string>
