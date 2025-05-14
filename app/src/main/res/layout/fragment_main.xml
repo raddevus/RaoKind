@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainFragment">
 
+
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -19,4 +20,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:paddingVertical="0dp"
+                android:text="@string/random_acts_info_header"/>
+            <ImageButton
+                android:id="@+id/toggleButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_marginVertical="-2dp"
+                android:textAlignment="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Expand/Collapse"
+                android:onClick="toggleVisibility"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/random_acts_info"
+            android:visibility="gone"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
