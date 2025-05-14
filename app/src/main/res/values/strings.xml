@@ -5,6 +5,8 @@
     <string name="title_dailytask">Daily Task</string>
     <string name="title_history">History</string>
     <string name="title_profile">Profile</string>
-    <string name="random_acts_info">Random Acts of Kindness helps create the opportunity to be more intentional about completing small, positive tasks that benefit others.\n\nWhile each individual task might only take a few moments or cost a few dollars, the cumulative impact of your efforts, and the efforts of others using this app, will undoubtedly make the world a more positive place! In addition, research suggests completing tasks like these is likely to strength your connections with others, improve your mood, and possibly your health. If you are ready, then let\'s get started!</string>
+    <string name="random_acts_info">Random Acts of Kindness helps create the opportunity to be more intentional about completing small, positive tasks that benefit others.</string>
     <string name="random_acts_info_header">Random Acts Info</string>
+    <string name="random_acts_explain_header">Random Acts Tasks Explained</string>
+    <string name="random_acts_explain">While each individual task might only take a few moments or cost a few dollars, the cumulative impact of your efforts, and the efforts of others using this app, will undoubtedly make the world a more positive place! In addition, research suggests completing tasks like these is likely to strength your connections with others, improve your mood, and possibly your health. If you are ready, then let\'s get started!</string>
 </resources>

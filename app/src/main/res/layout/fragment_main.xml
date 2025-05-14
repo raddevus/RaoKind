@@ -39,9 +39,10 @@
                 android:textAlignment="center"
                 android:paddingVertical="0dp"
                 android:textSize="25sp"
-                android:text="@string/random_acts_info_header"/>
+                android:text="@string/random_acts_info_header"
+                android:onClick="toggleVisibility"/>
             <ImageButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/infoToggleButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:scaleType="fitXY"
@@ -53,11 +54,45 @@
                 android:onClick="toggleVisibility"/>
         </LinearLayout>
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/infoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/random_acts_info"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="15dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:paddingVertical="0dp"
+                android:textSize="25sp"
+                android:text="@string/random_acts_explain_header"
+                android:onClick="toggleExplainVisibility"/>
+            <ImageButton
+                android:id="@+id/explainToggleButton"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_marginVertical="4dp"
+                android:textAlignment="center"
+                android:background="?android:attr/selectableItemBackground"
+                android:contentDescription="Expand/Collapse"
+                android:onClick="toggleExplainVisibility"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/explainTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/random_acts_explain"
+            android:visibility="gone"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="16dp"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
