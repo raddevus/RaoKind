@@ -1,6 +1,7 @@
 package com.newlibre.raokind.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,16 +23,19 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
+        val mainViewModel =
             ViewModelProvider(this).get(MainViewModel::class.java)
 
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
+        Log.d("TEST", "calling loadQuote...")
+
+        mainViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+        mainViewModel.loadQuote()
         return root
     }
 
