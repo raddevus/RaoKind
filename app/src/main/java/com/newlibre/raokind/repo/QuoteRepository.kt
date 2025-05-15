@@ -18,8 +18,12 @@ public class QuoteRepository {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Custom ISO format
 
             val targetDate = LocalDate.now().format(formatter)
+            val prodUrl = "https://newlibre.com/kind/api/"
+            val devUrl = "http://192.168.5.195:7103/"
+            val baseUrl = prodUrl
+            val targetUrl = "${baseUrl}Quote/GetDailyQuote?iso8601Date="
             Log.d("TEST", "targetDate : $targetDate")
-            val qr : String =  client.get("http://192.168.5.195:7103/Quote/GetDailyQuote?iso8601Date=$targetDate").body() // Deserialize JSON response
+            val qr : String =  client.get("${targetUrl}${targetDate}").body() // Deserialize JSON response
             Log.d("TEST", "after calling get")
             return qr
         } catch (e: Exception) {
