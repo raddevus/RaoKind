@@ -20,7 +20,7 @@ public class QuoteRepository {
             val targetDate = LocalDate.now().format(formatter)
             val prodUrl = "https://newlibre.com/kind/api/"
             val devUrl = "http://192.168.5.195:7103/"
-            val baseUrl = prodUrl
+            val baseUrl = devUrl
             val targetUrl = "${baseUrl}Quote/GetDailyQuote?iso8601Date="
             Log.d("TEST", "targetDate : $targetDate")
             val qr : String =  client.get("${targetUrl}${targetDate}").body() // Deserialize JSON response
