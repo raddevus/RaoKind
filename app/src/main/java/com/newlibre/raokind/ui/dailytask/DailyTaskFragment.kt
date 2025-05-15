@@ -22,15 +22,20 @@ class DailyTaskFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
+        val dailyTaskViewModel =
             ViewModelProvider(this).get(DailyTaskViewModel::class.java)
 
         _binding = FragmentDailytaskBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val taskTextView: TextView = binding.taskTextView
 
         val textView: TextView = binding.textDailytask
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
+
+        dailyTaskViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
+        }
+        dailyTaskViewModel.text.observe(viewLifecycleOwner){
+            taskTextView.text = it
         }
         return root
     }

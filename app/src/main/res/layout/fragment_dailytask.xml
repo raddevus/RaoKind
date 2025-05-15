@@ -5,58 +5,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.dailytask.DailyTaskFragment">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageButton
-                android:layout_width="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_new_task"
-                android:background="@drawable/button_background"
-                android:scaleType="centerInside"
-                android:paddingHorizontal="32dp"
-                android:paddingVertical="8dp"
-                android:contentDescription="New Task"/>
+                android:layout_weight=".5"
+                android:orientation="vertical"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_new_task"
+                    android:background="@drawable/button_background"
+                    android:scaleType="centerInside"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="8dp"
+                    android:contentDescription="New Task"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Task"
+                    android:textColor="@color/purple_500"
+                    android:paddingVertical="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Button 1"
-                android:textColor="@color/purple_500"/>
+                android:layout_weight=".5"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_accept_task"
+                    android:scaleType="centerInside"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="8dp"
+                    android:background="@drawable/button_background"
+                    android:contentDescription="Accept Task"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accept Task"
+                    android:paddingVertical="10dp"
+                    android:textColor="@color/purple_500"/>
+
+            </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            android:gravity="center" />
+        <TextView
+            android:id="@+id/taskTextView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageButton
-                android:layout_width="wrap_content"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="20dp"
+            android:textSize="27sp"
+            android:text=""/>
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="?android:attr/listDivider"
+            android:gravity="center" />
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_accept_task"
-                android:scaleType="centerInside"
-                android:paddingHorizontal="32dp"
-                android:paddingVertical="8dp"
-                android:background="@drawable/button_background"
-                android:contentDescription="Accept Task"/>
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Accept Task"
-                android:textColor="@color/purple_500"/>
-        </LinearLayout>
+            </LinearLayout>
     </LinearLayout>
     <TextView
         android:id="@+id/text_dailytask"
@@ -71,4 +104,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
