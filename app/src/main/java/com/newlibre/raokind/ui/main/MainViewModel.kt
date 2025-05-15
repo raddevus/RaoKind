@@ -26,7 +26,7 @@ class MainViewModel : ViewModel() {
             Log.d("TEST", "got it: " + qr.quote.content)
             Log.d("TEST", "called loadQuote - setting")
             Log.d("TEST", dailyQuote)
-            _text.postValue(qr.quote.content)
+            _text.postValue(qr.quote.content + "\n\n~ " + qr.quote.fName + " " + qr.quote.lName)
         }
     }
 

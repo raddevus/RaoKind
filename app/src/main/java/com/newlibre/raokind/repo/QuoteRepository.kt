@@ -4,27 +4,22 @@ import android.util.Log
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
-import io.ktor.client.plugins.contentnegotiation.*
 import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.serialization.kotlinx.json.*
-import kotlinx.serialization.Serializable
-
-import kotlinx.serialization.json.Json
+import org.threeten.bp.LocalDate
+import org.threeten.bp.format.DateTimeFormatter
 
 public class QuoteRepository {
     private val client = HttpClient(CIO) {
-        install(ContentNegotiation) {
-            json(Json {
-                ignoreUnknownKeys = true // Ignores unexpected fields in JSON
-                isLenient = true // Allows for relaxed JSON parsing
-            })
-        }
+
     }
 
     suspend fun fetchDailyQuote(): String? {
         return try {
-            val qr : String =  client.get("http://192.168.5.195:7103/Quote/GetDailyQuote?iso8601Date=2024-09-04").body() // Deserialize JSON response
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Custom ISO format
+
+            val targetDate = LocalDate.now().format(formatter)
+            Log.d("TEST", "targetDate : $targetDate")
+            val qr : String =  client.get("http://192.168.5.195:7103/Quote/GetDailyQuote?iso8601Date=$targetDate").body() // Deserialize JSON response
             Log.d("TEST", "after calling get")
             return qr
         } catch (e: Exception) {
@@ -38,10 +33,8 @@ public class QuoteRepository {
     }
 }
 
-@Serializable
 data class QuoteResponse(val quote: Quote)
 
-@Serializable
 data class Quote(
     val id: Int,
     val fName: String,
