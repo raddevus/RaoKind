@@ -29,7 +29,7 @@ class MainFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val textView: TextView = binding.quoteTextView
         Log.d("TEST", "calling loadQuote...")
 
         mainViewModel.text.observe(viewLifecycleOwner) {
