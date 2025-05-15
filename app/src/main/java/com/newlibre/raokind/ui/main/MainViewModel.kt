@@ -26,14 +26,12 @@ class MainViewModel : ViewModel() {
             Log.d("TEST", "got it: " + qr.quote.content)
             Log.d("TEST", "called loadQuote - setting")
             Log.d("TEST", dailyQuote)
-            text = MutableLiveData<String>().apply {
-                value = dailyQuote
-            }
+            _text.postValue(qr.quote.content)
         }
     }
 
-    private var _text = MutableLiveData<String>().apply {
-        value = dailyQuote
+    private val _text = MutableLiveData<String>().apply {
+        value = "This is Main Fragment"
     }
-    var text: LiveData<String> = _text
+    val text: LiveData<String> = _text
 }
