@@ -28,7 +28,8 @@
                     android:scaleType="centerInside"
                     android:paddingHorizontal="32dp"
                     android:paddingVertical="8dp"
-                    android:contentDescription="New Task"/>
+                    android:contentDescription="New Task"
+                    android:id="@+id/newTaskButton"/>
 
                 <TextView
                     android:layout_width="wrap_content"

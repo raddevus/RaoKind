@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.newlibre.raokind.R
 import com.newlibre.raokind.databinding.FragmentDailytaskBinding
 
 class DailyTaskFragment : Fragment() {
@@ -28,7 +30,7 @@ class DailyTaskFragment : Fragment() {
         _binding = FragmentDailytaskBinding.inflate(inflater, container, false)
         val root: View = binding.root
         val taskTextView: TextView = binding.taskTextView
-
+        val newTaskButton: ImageButton = binding.newTaskButton
         val textView: TextView = binding.textDailytask
 
         dailyTaskViewModel.text.observe(viewLifecycleOwner) {
@@ -37,6 +39,11 @@ class DailyTaskFragment : Fragment() {
         dailyTaskViewModel.text.observe(viewLifecycleOwner){
             taskTextView.text = it
         }
+
+        newTaskButton.setOnClickListener{
+            dailyTaskViewModel.getAllKTasks()
+        }
+
         return root
     }
 

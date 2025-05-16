@@ -22,6 +22,7 @@ class KTaskRepository {
             val targetUrl = "${baseUrl}KTask/GetAll"
             val allKTasks : String =  client.get("${targetUrl}").body()
             Log.d("TEST", "after calling get")
+            Log.d("TEST", allKTasks)
             return allKTasks
         } catch (e: Exception) {
             Log.d("TEST","Error fetching quote: ${e.message}")
