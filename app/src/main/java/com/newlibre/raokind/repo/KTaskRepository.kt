@@ -1,19 +1,21 @@
 package com.newlibre.raokind.repo
 
+import android.content.Context
 import android.util.Log
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
-import org.threeten.bp.LocalDate
-import org.threeten.bp.format.DateTimeFormatter
+import java.io.File
 
-class KTaskRepository {
+class KTaskRepository(context: Context) {
+    val context = context
     private val client = HttpClient(CIO) {
 
     }
 
     val allKTasks : List<KTask> = emptyList()
+    var kTasksJson: String? = null
 
     suspend fun getAllTasks(): String? {
         return try {
@@ -23,14 +25,24 @@ class KTaskRepository {
             val devUrl = "http://192.168.5.126:7103/"
             val baseUrl = devUrl
             val targetUrl = "${baseUrl}KTask/GetAll"
-            val allKTasks : String =  client.get("${targetUrl}").body()
+            val ktaskResponseJson : String =  client.get("${targetUrl}").body()
             Log.d("TEST", "after calling get")
-            Log.d("TEST", allKTasks)
-            return allKTasks
+            Log.d("TEST", ktaskResponseJson)
+            return ktaskResponseJson
         } catch (e: Exception) {
             Log.d("TEST","Error fetching quote: ${e.message}")
             null
         }
+    }
+
+    private fun loadKTasksFromLocalFile() : Boolean{
+        val appContext = context.applicationContext
+        val file = File(appContext.filesDir, "ktasks.json")
+        if (file.exists()) {
+            kTasksJson = file.readText()
+            return true
+        }
+        return false
     }
 
     fun close() {

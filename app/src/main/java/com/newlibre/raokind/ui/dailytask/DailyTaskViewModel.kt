@@ -1,6 +1,8 @@
 package com.newlibre.raokind.ui.dailytask
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,8 +10,11 @@ import androidx.lifecycle.viewModelScope
 import com.newlibre.raokind.repo.KTaskRepository
 import kotlinx.coroutines.launch
 
-class DailyTaskViewModel : ViewModel() {
-    private val ktaskRepo = KTaskRepository()
+class DailyTaskViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val application: Application = application
+
+    private val ktaskRepo = KTaskRepository(application.applicationContext)
 
     fun getAllKTasks(){
         viewModelScope.launch {
