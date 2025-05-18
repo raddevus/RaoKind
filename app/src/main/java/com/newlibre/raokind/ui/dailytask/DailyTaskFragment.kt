@@ -43,7 +43,7 @@ class DailyTaskFragment : Fragment() {
         newTaskButton.setOnClickListener{
             dailyTaskViewModel.getAllKTasks()
         }
-
+        dailyTaskViewModel.loadAllKTasks()
         return root
     }
 

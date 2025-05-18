@@ -19,7 +19,8 @@ public class QuoteRepository {
 
             val targetDate = LocalDate.now().format(formatter)
             val prodUrl = "https://newlibre.com/kind/api/"
-            val devUrl = "http://192.168.5.195:7103/"
+            // val devUrl = "http://192.168.5.195:7103/"
+            val devUrl = "http://192.168.5.126:7103/"
             val baseUrl = devUrl
             val targetUrl = "${baseUrl}Quote/GetDailyQuote?iso8601Date="
             Log.d("TEST", "targetDate : $targetDate")

@@ -13,11 +13,14 @@ class KTaskRepository {
 
     }
 
+    val allKTasks : List<KTask> = emptyList()
+
     suspend fun getAllTasks(): String? {
         return try {
 
             val prodUrl = "https://newlibre.com/kind/api/"
-            val devUrl = "http://192.168.5.195:7103/"
+            // val devUrl = "http://192.168.5.195:7103/"
+            val devUrl = "http://192.168.5.126:7103/"
             val baseUrl = devUrl
             val targetUrl = "${baseUrl}KTask/GetAll"
             val allKTasks : String =  client.get("${targetUrl}").body()
