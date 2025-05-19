@@ -1,6 +1,7 @@
 package  com.newlibre.raokind.repo
 
 import android.util.Log
+import com.newlibre.raokind.AppConstants
 import io.ktor.client.*
 import io.ktor.client.call.body
 import io.ktor.client.engine.cio.*
@@ -18,11 +19,8 @@ public class QuoteRepository {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Custom ISO format
 
             val targetDate = LocalDate.now().format(formatter)
-            val prodUrl = "https://newlibre.com/kind/api/"
-            // val devUrl = "http://192.168.5.195:7103/"
-            val devUrl = "http://192.168.5.126:7103/"
-            val baseUrl = devUrl
-            val targetUrl = "${baseUrl}Quote/GetDailyQuote?iso8601Date="
+
+            val targetUrl = "${AppConstants.API_BASE_URL}Quote/GetDailyQuote?iso8601Date="
             Log.d("TEST", "targetDate : $targetDate")
             val qr : String =  client.get("${targetUrl}${targetDate}").body() // Deserialize JSON response
             Log.d("TEST", "after calling get")

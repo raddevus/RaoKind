@@ -9,6 +9,7 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import java.io.File
 import com.google.gson.Gson
+import com.newlibre.raokind.AppConstants
 
 class KTaskRepository(context: Context) {
     val context = context
@@ -25,11 +26,8 @@ class KTaskRepository(context: Context) {
             if (loadKTasksFromLocalFile()){
                 return kTasksJson
             }
-            val prodUrl = "https://newlibre.com/kind/api/"
-            // val devUrl = "http://192.168.5.195:7103/"
-            val devUrl = "http://192.168.5.126:7103/"
-            val baseUrl = devUrl
-            val targetUrl = "${baseUrl}KTask/GetAll"
+
+            val targetUrl = "${AppConstants.API_BASE_URL}KTask/GetAll"
             var ktaskResponseJson : String =  client.get("${targetUrl}").body()
             Log.d("TEST", "${ktaskResponseJson}")
             var ktr :KTaskResponse = gson.fromJson<KTaskResponse>(ktaskResponseJson,
