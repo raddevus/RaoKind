@@ -26,7 +26,7 @@ class DailyTaskFragment : Fragment() {
     ): View {
         val dailyTaskViewModel =
             ViewModelProvider(this).get(DailyTaskViewModel::class.java)
-            dailyTaskViewModel
+
 
         _binding = FragmentDailytaskBinding.inflate(inflater, container, false)
         val root: View = binding.root
