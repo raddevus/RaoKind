@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.newlibre.raokind.repo.KTaskRepository
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class DailyTaskViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -18,7 +19,9 @@ class DailyTaskViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getAllKTasks(){
         viewModelScope.launch {
-            Log.d("TEST", ktaskRepo.getAllTasks() ?: "Could not retrieve the KTasks.")
+            Log.d("TEST", "got tasks!" ?: "Could not retrieve the KTasks.")
+            var allTasks = ktaskRepo.getAllTasks()
+            _text.postValue(allTasks[Random.nextInt(0, allTasks.count() -1)].description)
         }
     }
 
