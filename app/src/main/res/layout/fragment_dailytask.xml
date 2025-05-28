@@ -90,7 +90,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_task_count"
+                    android:layout_weight=".1"
+                    android:paddingLeft="5dp"
+                    android:paddingVertical="5dp"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="5dp"
+                    android:id="@+id/taskCountMessage"
+                    android:layout_weight=".9"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:text="There are X tasks available for selection."/>
             </LinearLayout>
+
     </LinearLayout>
     <TextView
         android:id="@+id/text_dailytask"
@@ -105,7 +124,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
