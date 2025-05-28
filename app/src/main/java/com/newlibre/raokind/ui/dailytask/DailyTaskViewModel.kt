@@ -7,6 +7,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.newlibre.raokind.CurrentUserTask
+import com.newlibre.raokind.repo.KTask
 import com.newlibre.raokind.repo.KTaskRepository
 import kotlinx.coroutines.launch
 import kotlin.random.Random
@@ -19,9 +21,15 @@ class DailyTaskViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun getAllKTasks(){
         viewModelScope.launch {
-            Log.d("TEST", "got tasks!" ?: "Could not retrieve the KTasks.")
             var allTasks = ktaskRepo.getAllTasks()
-            _text.postValue(allTasks[Random.nextInt(0, allTasks.count() -1)].description)
+            Log.d("TEST", "got tasks! - count: ${allTasks.count()}" ?: "Could not retrieve the KTasks.")
+            if (allTasks.count() > 1) {
+                CurrentUserTask.userTask = allTasks[Random.nextInt(0, allTasks.count() - 1)]
+            }
+            else{
+                CurrentUserTask.userTask = allTasks[0]
+            }
+            _text.postValue(CurrentUserTask.userTask?.description)
         }
     }
 
@@ -29,6 +37,10 @@ class DailyTaskViewModel(application: Application) : AndroidViewModel(applicatio
         value = "This is placeholder and should be very long to show that this could be a long thing is placeholder and should be very long to show that this could be a long thing"
     }
     val text: LiveData<String> = _text
+
+    fun saveKTaskJson(allKTasks: MutableList<KTask>){
+        ktaskRepo.saveKTaskList(allKTasks)
+    }
 
     fun loadAllKTasks(){
 

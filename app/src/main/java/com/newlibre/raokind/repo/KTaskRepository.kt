@@ -20,15 +20,26 @@ class KTaskRepository(context: Context) {
 
     }
 
-    val allKTasks : List<KTask> = emptyList()
+    object AllKTasks {
+        var allKTasks : MutableList<KTask> = mutableListOf()
+    }
     var kTasksJson: String? = null
 
-    suspend fun getAllTasks(): List<KTask> {
+    suspend fun getAllTasks(): MutableList<KTask> {
         return try {
             if (loadKTasksFromLocalFile()){
-                return gson.fromJson<List<KTask>>(kTasksJson,
-                    object: TypeToken<List<KTask>>(){}.type
-                )
+                try {
+                    AllKTasks.allKTasks = gson.fromJson<MutableList<KTask>>(
+                        kTasksJson,
+                        object : TypeToken<MutableList<KTask>>() {}.type
+                    )
+                    return AllKTasks.allKTasks
+                }
+                catch (ex: Exception){
+                    val appContext = context.applicationContext
+                    val file = File(appContext.filesDir, localKTaskFile)
+                    file.delete()
+                }
             }
 
             val targetUrl = "${AppConstants.API_BASE_URL}KTask/GetAll"
@@ -42,12 +53,13 @@ class KTaskRepository(context: Context) {
                 val KTaskListAsJson = gson.toJson(ktr.tasks)
                 saveKTasksToLocalFile(KTaskListAsJson)
                 Log.d("TEST", "Saved KTasks as JSON: ${KTaskListAsJson}")
+                AllKTasks.allKTasks = ktr.tasks
                 return ktr.tasks
             }
-            return allKTasks
+            return AllKTasks.allKTasks
         } catch (e: Exception) {
             Log.d("TEST","Error fetching ktask: ${e.message}")
-            allKTasks
+            AllKTasks.allKTasks
         }
     }
 
@@ -69,13 +81,17 @@ class KTaskRepository(context: Context) {
         file.writeText(jsonData)
     }
 
+    public fun saveKTaskList(allKTasks: MutableList<KTask>){
+        saveKTasksToLocalFile(gson.toJson(allKTasks))
+    }
+
     fun close() {
         client.close() // Properly close the HTTP client
     }
 
 }
 
-data class KTaskResponse(val success: Boolean, val tasks: List<KTask>)
+data class KTaskResponse(val success: Boolean, val tasks: MutableList<KTask>)
 
 data class KTask(
     val id: Int,

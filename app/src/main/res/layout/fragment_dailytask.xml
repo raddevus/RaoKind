@@ -54,7 +54,8 @@
                     android:paddingHorizontal="32dp"
                     android:paddingVertical="8dp"
                     android:background="@drawable/button_background"
-                    android:contentDescription="Accept Task"/>
+                    android:contentDescription="Accept Task"
+                    android:id="@+id/acceptTaskButton"/>
 
                 <TextView
                     android:layout_width="wrap_content"

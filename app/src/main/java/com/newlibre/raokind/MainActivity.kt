@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.newlibre.raokind.databinding.ActivityMainBinding
+import com.newlibre.raokind.repo.KTask
 
 class MainActivity : AppCompatActivity() {
 
@@ -80,4 +81,12 @@ class MainActivity : AppCompatActivity() {
         quoteToggleButton.setImageResource(if (isExpanded) R.drawable.ic_arrow_right else R.drawable.ic_arrow_down)
     }
 
+}
+
+object CurrentUserTask{
+    var userTask: KTask? = null
+}
+
+object UserTaskRepository {
+    val allUserTasks: MutableList<KTask> = mutableListOf()
 }
